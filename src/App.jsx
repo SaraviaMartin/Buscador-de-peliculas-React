@@ -14,7 +14,7 @@ function useSearch (){
       return
     }
     if(search === ''){
-      setError('No se peude buuscar una pelicula vacia')
+      setError('No se puede buscar una pelicula vacia')
       return
     }
     if(search.match(/^\d+$/)){
@@ -32,13 +32,13 @@ function useSearch (){
 }
 
 function App() {
-  const {movies} = useMovies()
   const {search, updateSearch, error} = useSearch()
+  const {movies,loading, getMovies} = useMovies({search})
   
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log({search})
+    getMovies()
     
   }
 
@@ -65,7 +65,9 @@ function App() {
       </header>
 
     <main>
-      <Movies movies={movies}/>
+      {
+        loading ? <p>Cargando...</p> : <Movies movies={movies}/>
+      }
     </main>
       
     </div>

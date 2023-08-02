@@ -46,7 +46,11 @@ function App() {
           Buscador de peliculas 
         </h1>
         <form className='form' onSubmit={handleSubmit}>
-          <input style={{border: '1px solid transparent ', borderColor: error ? 'red' : 'transparent'}} onChange={handleChange} value={query} name='query' ref={inputRef} placeholder='Avengers, Star Wars, The Matrix'/>
+          <input 
+          style={{
+            border: '1px solid transparent ', 
+            borderColor: error ? 'red' : 'transparent'
+            }} onChange={handleChange} value={query} name='query' ref={inputRef} placeholder='Avengers, Star Wars, The Matrix'/>
           <button type='submit'>Buscar</button>
         </form>
         {error && <p style={{color: 'red'}}>{error}</p> }

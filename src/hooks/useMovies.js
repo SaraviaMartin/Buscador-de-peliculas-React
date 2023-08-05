@@ -8,7 +8,7 @@ export function useMovies ({search, sort}){
     const previusSearch = useRef(search)
 
     const getMovies = useMemo(() => { 
-      return async () => {
+      return async ({search}) => {
         if(search === previusSearch.current) return 
         
       try {
@@ -23,7 +23,7 @@ export function useMovies ({search, sort}){
         setLoading(false)
       }
     }
-  }, [search])
+  }, [])
 
     // const sortedMovies  = sort
     //   ? [...movies].sort((a, b) => a.title.localeCompare(b.title))

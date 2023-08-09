@@ -74,7 +74,7 @@ function App() {
             border: '1px solid transparent ', 
             borderColor: error ? 'red' : 'transparent'
             }} onChange={handleChange} value={search} name='query' placeholder='Avengers, Star Wars, The Matrix'/>
-            <input type="checkbox" onChange={handleSort}  checked={sort}/>
+            <span>Filtrar por Titulo </span><input type="checkbox" onChange={handleSort}  checked={sort}/>
           <button type='submit'>Buscar</button>
         </form>
         {error && <p style={{color: 'red'}}>{error}</p> }

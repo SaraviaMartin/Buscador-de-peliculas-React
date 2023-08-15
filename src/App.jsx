@@ -34,8 +34,9 @@ function useSearch (){
 
 function App() {
   const [sort, setSort] = useState(false)
+  const [yearSort, setYearSort] = useState(false)
   const {search, updateSearch, error} = useSearch()
-  const {movies,loading, getMovies} = useMovies({search, sort})
+  const {movies,loading, getMovies} = useMovies({search, sort, yearSort})
   
 
   const debouncedGetMovies = useCallback(
@@ -53,6 +54,10 @@ function App() {
 
   const handleSort = () => {
     setSort(!sort)
+    
+  }
+  const handleYearSort = () => {
+    setYearSort(!yearSort)
   }
 
   const handleChange = (event) => {
@@ -75,6 +80,7 @@ function App() {
             borderColor: error ? 'red' : 'transparent'
             }} onChange={handleChange} value={search} name='query' placeholder='Avengers, Star Wars, The Matrix'/>
             <span>Filtrar por Titulo </span><input type="checkbox" onChange={handleSort}  checked={sort}/>
+            <span>Filtrar por Titulo </span><input type="checkbox" onChange={handleYearSort}  checked={yearSort}/>
           <button type='submit'>Buscar</button>
         </form>
         {error && <p style={{color: 'red'}}>{error}</p> }
